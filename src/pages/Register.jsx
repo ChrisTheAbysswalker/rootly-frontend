@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { api } from "../api/api"; // Importamos tu instancia de axios
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -8,15 +11,35 @@ const Register = () => {
     id_rol: 2,
   });
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const handleChange = (e) => {
-    const value =
-      e.target.name === "id_rol" ? parseInt(e.target.value) : e.target.value;
+    const value = e.target.name === "id_rol" ? parseInt(e.target.value) : e.target.value;
     setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Registrando nuevo usuario en Rootly...", formData);
+    setLoading(true);
+    setError(null);
+
+    try {
+      // Llamada a tu endpoint de Go
+      const response = await api.post("/auth/register", formData);
+      
+      console.log("Usuario creado:", response);
+      alert("¡Cuenta creada con éxito! Ahora puedes iniciar sesión.");
+      
+      // Redirigimos al login después del registro exitoso
+      navigate("/login");
+    } catch (err) {
+      console.error("Error en el registro:", err);
+      // Manejamos errores comunes (ej. email ya registrado)
+      setError(err.response?.data?.message || "Ocurrió un error al registrar la cuenta.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -34,6 +57,14 @@ const Register = () => {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow-xl border border-gray-100 sm:rounded-2xl sm:px-10">
+            
+            {/* Mensaje de error visual */}
+            {error && (
+              <div className="mb-4 p-3 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm">
+                {error}
+              </div>
+            )}
+
             <form className="space-y-5" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
@@ -94,21 +125,24 @@ const Register = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors duration-200"
+                  disabled={loading}
+                  className={`w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white transition-colors duration-200 ${
+                    loading ? "bg-emerald-400 cursor-not-allowed" : "bg-emerald-600 hover:bg-emerald-700"
+                  }`}
                 >
-                  Registrar Cuenta
+                  {loading ? "Registrando..." : "Registrar Cuenta"}
                 </button>
               </div>
             </form>
 
             <div className="mt-6 text-center text-sm">
               <span className="text-gray-600">¿Ya tienes cuenta? </span>
-              <a
-                href="/login"
+              <button
+                onClick={() => navigate("/login")}
                 className="font-medium text-emerald-600 hover:text-emerald-500"
               >
                 Inicia sesión aquí
-              </a>
+              </button>
             </div>
           </div>
         </div>

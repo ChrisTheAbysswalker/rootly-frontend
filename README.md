@@ -1,64 +1,82 @@
-# 🌿 Rootly: Jerarquía Natural
+# Proyecto Turing - Frontend
 
-**Rootly** es una plataforma disruptiva de gestión y analítica de inventarios botánicos. El proyecto combina la potencia de la analítica avanzada con un concepto innovador de **Bio-Inteligencia**, donde la jerarquía organizacional es liderada por expertos de la fauna para supervisar la salud y el ciclo de vida de especies vegetales.
+Este es el repositorio del frontend para el Proyecto Turing. La aplicación está construida con React y Vite, y utiliza Tailwind CSS para el diseño.
 
-Este software ha sido desarrollado como parte del proceso de selección técnica para **Turing IA**, cumpliendo con los estándares de calidad, adaptabilidad y profesionalismo requeridos.
+## Documentación Técnica
 
----
+### Requisitos del Sistema
 
-## 🚀 Características del Proyecto
+- Node.js (versión 18.x o superior recomendada)
+- npm (normalmente se instala con Node.js)
 
-* **Dashboard de Métricas**: Visualización de KPIs como salud del vivero, sensores activos y niveles de humedad en tiempo real.
-* **Inventario Dinámico**: Sistema de gestión de especies mediante tarjetas con indicadores visuales de estado (Saludable, Alerta, Crítico) y controles para operaciones CRUD.
-* **Diseño Adaptable (Mobile-First)**: Interfaz totalmente responsiva que asegura una navegación óptima en dispositivos móviles y de escritorio.
-* **Navegación Fluida**: Implementación de navegación interna mediante anclas y scroll suave para mejorar la experiencia del usuario (UX).
+### Configuración y Ejecución Local
 
----
+Siga estas instrucciones para configurar y ejecutar el proyecto en su entorno local.
 
-## 🐾 Estructura Organizacional: Especies al Mando
+1.  **Clonar el Repositorio**
 
-El proyecto utiliza una metáfora de eficiencia donde cada miembro del staff representa una virtud de gestión técnica:
-
-1.  **Sr. Búho (Director de Analítica)**: Supervisión de reportes y salud global.
-2.  **Arq. Castor (Jefe de Infraestructura)**: Gestión de registros y expansión del inventario.
-3.  **Coord. Abeja (Líder de Comunicación)**: Monitoreo de sensores y alertas de red.
-
-
-
----
-
-## 🛠️ Stack Tecnológico
-
-* **Frontend**: React.js
-* **Estilos**: Tailwind CSS
-* **Arquitectura**: Componentes modulares y responsivos.
-* **Paleta de Colores**: 
-    * `Charcoal Blue`: Profundidad y profesionalismo.
-    * `Muted Teal`: Acción e identidad botánica.
-    * `Ash Grey`: Claridad y soporte visual.
-
----
-
-## 📋 Instalación y Uso
-
-1.  **Clonar el repositorio**:
     ```bash
-    git clone [https://github.com/tu-usuario/rootly.git](https://github.com/tu-usuario/rootly.git)
+    git clone <https://github.com/ChrisTheAbysswalker/rootly-frontend>
     ```
-2.  **Instalar dependencias**:
+
+2.  **Navegar al Directorio del Proyecto**
+
+    ```bash
+    cd turing-proyect
+    ```
+
+3.  **Instalar Dependencias**
+
+    Ejecute el siguiente comando para instalar todas las dependencias necesarias definidas en el archivo `package.json`.
+
     ```bash
     npm install
     ```
-3.  **Ejecutar en modo desarrollo**:
+
+4.  **Ejecutar el Proyecto en Modo de Desarrollo**
+
+    Una vez instaladas las dependencias, puede iniciar el servidor de desarrollo local con:
+
     ```bash
-    npm start
+    npm run dev
     ```
 
----
+    La aplicación estará disponible en `http://localhost:5173` (o en el puerto que Vite asigne si el 5173 está ocupado).
 
-## 📈 Próximos Pasos (Fase 2)
-* Implementación de lógica de filtrado dinámica para los botones de acceso rápido.
-* Conexión a base de datos relacional bajo la norma **3NF** (Tercera Forma Normal).
-* Desarrollo de Manual de Usuario detallado.
+### Scripts Disponibles
 
-Desarrollado con compromiso y visión estratégica para **Turing Inteligencia Artificial**.
+En el archivo `package.json` se definen los siguientes scripts:
+
+-   `npm run dev`: Inicia el servidor de desarrollo de Vite.
+-   `npm run build`: Compila la aplicación para producción en el directorio `dist`.
+-   `npm run lint`: Ejecuta ESLint para analizar el código en busca de errores y problemas de estilo.
+-   `npm run preview`: Inicia un servidor local para previsualizar la compilación de producción.
+
+### Dependencias Principales
+
+El proyecto utiliza las siguientes librerías principales:
+
+-   `react`: Para construir la interfaz de usuario.
+-   `react-dom`: Para renderizar los componentes de React en el DOM.
+-   `react-router-dom`: Para gestionar la navegación y el enrutamiento en la aplicación.
+-   `tailwindcss`: Para el diseño y los estilos.
+-   `lucide-react`: Para los iconos.
+-   `jwt-decode`: Para decodificar tokens JWT en el lado del cliente.
+-   `vite`: Como herramienta de construcción y servidor de desarrollo.
+
+### Estructura del Proyecto
+
+```
+turing-proyect/
+├── src/
+│   ├── api/         # Lógica para peticiones a la API
+│   ├── assets/      # Archivos estáticos como imágenes y SVGs
+│   ├── components/  # Componentes reutilizables de React
+│   ├── layouts/     # Componentes de estructura (Header, Footer)
+│   ├── pages/       # Componentes que representan páginas completas
+│   ├── App.jsx      # Componente raíz de la aplicación
+│   └── main.jsx     # Punto de entrada de la aplicación
+├── vite.config.js   # Configuración de Vite
+├── tailwind.config.js # Configuración de Tailwind CSS
+└── package.json     # Dependencias y scripts del proyecto
+```
