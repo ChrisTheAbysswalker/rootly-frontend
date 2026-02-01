@@ -1,4 +1,4 @@
-# # 🌿 Rootly: Jerarquía Natural
+# 🌿 Rootly: Jerarquía Natural
 
 **Rootly** es una plataforma disruptiva de gestión y analítica de inventarios botánicos. El proyecto combina la potencia de la analítica avanzada con un concepto innovador de **Bio-Inteligencia**, donde la jerarquía organizacional es liderada por expertos de la fauna para supervisar la salud y el ciclo de vida de especies vegetales.
 

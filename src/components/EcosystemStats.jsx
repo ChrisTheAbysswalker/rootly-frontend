@@ -1,30 +1,57 @@
-export function EcosystemStats() {
-  const stats = [
-    {
-      label: "Salud del Vivero",
-      value: "98%",
-      detail: "↑ 2% esta semana",
-      icon: "🌱",
-    },
-    {
-      label: "Sensores Activos",
-      value: "24",
-      detail: "Monitoreo 24/7",
-      icon: "📡",
-    },
-    {
-      label: "Humedad Promedio",
-      value: "65%",
-      detail: "Nivel óptimo",
-      icon: "💧",
-    },
-    {
-      label: "Especies en Alerta",
-      value: "3",
-      detail: "Requieren atención",
-      icon: "⚠️",
-    },
-  ];
+import { useState, useEffect } from "react";
+import { api } from "../api/api";
+
+function EcosystemStats() {
+  const [statsData, setStatsData] = useState([]);
+  const [error, setError] = useState(null);
+
+  const transformStats = (apiData) => {
+    return [
+      {
+        label: "Salud del Vivero",
+        value: `${apiData.salud_vivero}%`,
+        detail:
+          apiData.salud_vivero > 80 ? "Nivel excelente" : "Requiere revisión",
+        icon: "🌱",
+      },
+      {
+        label: "Sensores Activos",
+        value: apiData.sensores_activos.toString(),
+        detail: "Monitoreo en tiempo real",
+        icon: "📡",
+      },
+      {
+        label: "Humedad Promedio",
+        value: `${apiData.humedad_promedio}%`,
+        detail:
+          apiData.humedad_promedio < 40 ? "Ambiente seco" : "Nivel óptimo",
+        icon: "💧",
+      },
+      {
+        label: "Especies en Alerta",
+        value: apiData.especies_alerta.toString(),
+        detail:
+          apiData.especies_alerta > 0
+            ? "Requieren atención"
+            : "Todo bajo control",
+        icon: "⚠️",
+      },
+    ];
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await api.get("/ecosistema/stats");
+        const formatted = transformStats(data);
+        setStatsData(formatted);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <section
@@ -42,7 +69,7 @@ export function EcosystemStats() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {stats.map((item, index) => (
+        {statsData.map((item, index) => (
           <div
             key={index}
             className="relative h-48 rounded-2xl bg-white border border-ash-grey-200 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
