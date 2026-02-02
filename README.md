@@ -1,4 +1,4 @@
-# Proyecto Turing - Frontend
+# Proyecto Rootly - Frontend
 
 Este es el repositorio del frontend para el Proyecto Turing. La aplicación está construida con React y Vite, y utiliza Tailwind CSS para el diseño.
 

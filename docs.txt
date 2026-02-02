@@ -1,0 +1,71 @@
+# Documentación del Proyecto: Rootly Frontend
+
+## 1. Descripción General del Proyecto
+
+El proyecto "Rootly" es una aplicación web de frontend desarrollada con React y Vite. Su propósito es servir como un dashboard para la gestión y monitoreo de un inventario botánico o ecosistema, al que se refieren como "Rootly".
+
+La aplicación permite a los usuarios:
+- Visualizar un inventario de especies de plantas.
+- Filtrar especies por familia.
+- Registrar nuevos usuarios y autenticarse.
+- Acceder a un panel de administración (Dashboard) para usuarios con rol de "Administrador".
+- En el dashboard, los administradores pueden crear, leer, actualizar y eliminar (CRUD) registros de especies.
+- Monitorear el estado de salud de cada especie (humedad y temperatura).
+- Visualizar estadísticas generales del ecosistema y el personal a cargo.
+
+## 2. Estructura y Enrutamiento (App.jsx)
+
+El archivo `App.jsx` es el componente principal que define la estructura de las rutas de la aplicación utilizando `react-router-dom`.
+
+- **Ruta principal (`/`)**: Muestra la página de inicio pública. Esta página está compuesta por varios componentes anidados dentro de un `Layout`, incluyendo `Hero`, `QuickAccess`, `Cards`, `EcosystemStats` y `StaffFaunaSection`.
+- **Rutas de Autenticación**:
+  - `/login`: Dirige al componente `Login`.
+  - `/register`: Dirige al componente `Register`.
+- **Ruta Protegida (`/dashboard`)**:
+  - Utiliza el componente `ProtectedRoute` para restringir el acceso solo a usuarios autenticados (`token` existe) y con rol de administrador (`rol === 1`).
+  - Si se cumplen las condiciones, renderiza el componente `Dashboard`. De lo contrario, redirige a `/login`.
+- **Ruta de Error (`*` y `/404`)**: Cualquier ruta no definida dirige al componente `NotFound`.
+
+## 3. Páginas (./src/pages)
+
+Las páginas son los componentes principales que se renderizan para cada ruta.
+
+- **`Dashboard.jsx`**: Es el panel de administración. Permite realizar operaciones CRUD sobre las especies. Muestra una tabla con todas las especies y botones para "Monitorear", "Editar" y "Eliminar". Desde aquí se puede abrir el formulario para agregar/editar especies (`SpeciesForm`) y ver el historial de salud (`HealthSection`).
+- **`Login.jsx`**: Contiene el formulario de inicio de sesión. Realiza una llamada a la API (`/auth/login`), y si es exitosa, guarda el token y los datos del usuario en `localStorage`. Redirige al `/dashboard` si el usuario es administrador, o a la página principal (`/`) en caso contrario.
+- **`Register.jsx`**: Contiene el formulario de registro de nuevos usuarios. Llama al endpoint `/auth/register` de la API.
+- **`NotFound.jsx`**: Página que se muestra cuando una ruta no existe o el usuario no tiene los permisos necesarios.
+
+## 4. Componentes (./src/components)
+
+Estos son componentes reutilizables que se usan a lo largo de la aplicación.
+
+- **`Cards.jsx`**: Muestra el inventario de especies en formato de tarjetas. Obtiene los datos de la API (`/especies`) y permite filtrar las especies por familia. Incluye paginación para navegar por los resultados.
+- **`EcosystemStats.jsx`**: Presenta estadísticas clave del "ecosistema", como la salud general del vivero, el número de sensores activos, la humedad promedio y las especies en alerta. Obtiene estos datos del endpoint `/ecosistema/stats`.
+- **`HealthSection.jsx`**: Un componente que se muestra dentro del Dashboard para visualizar y actualizar el estado de salud (humedad y temperatura) de una especie específica. Permite agregar nuevos registros de monitoreo.
+- **`Hero.jsx`**: El componente principal de la página de inicio, con una imagen de fondo y el eslogan de la aplicación.
+- **`ProtectedRoute.jsx`**: Un componente de orden superior que envuelve rutas privadas. Verifica si la condición `canAccess` es verdadera. Si no lo es, redirige al usuario a una página de respaldo (por defecto, `/login`).
+- **`QuickAccess.jsx`**: Muestra tarjetas de acceso rápido a las principales funcionalidades: "Monitoreo", "Inventario" y "Reportes".
+- **`SpeciesForm.jsx`**: Formulario para crear o editar una especie. Carga las familias y estados de salud desde la API para rellenar los campos de selección. Se utiliza dentro del `Dashboard`.
+- **`Staff.jsx`**: Muestra una sección con los miembros del personal, obteniendo los datos desde el endpoint `/staff`.
+
+## 5. Layouts (./src/layouts)
+
+Estos componentes definen la estructura visual general de la aplicación.
+
+- **`Header.jsx`**: La barra de navegación superior. Muestra enlaces a diferentes secciones, el estado de bienvenida al usuario si está logueado, y los botones de "Login" o "Logout" según corresponda. También muestra un enlace al "Dashboard" si el usuario es administrador.
+- **`Footer.jsx`**: El pie de página de la aplicación, con información de la compañía, enlaces y derechos de autor.
+- **`Layout.jsx`**: Un componente contenedor que envuelve las páginas principales. Incluye el `Header` y el `Footer`, y renderiza el contenido (`children`) en el medio.
+
+## 6. API (./src/api/api.js)
+
+Este archivo centraliza la comunicación con el backend.
+
+- Define un objeto `api` con métodos para las operaciones HTTP (`get`, `post`, `put`, `delete`).
+- Utiliza una `BASE_URL` (actualmente `/api`) para las peticiones, lo que sugiere que está configurado para usar un proxy en desarrollo.
+- Incluye una función `handleResponse` para gestionar las respuestas de la API, procesar errores y convertir la respuesta a JSON.
+
+## 7. Punto de Entrada (main.jsx)
+
+Es el archivo que inicia la aplicación de React.
+- Utiliza `createRoot` para renderizar el componente `App` dentro del elemento con `id="root"` en el `index.html`.
+- Envuelve `App` en `<StrictMode>` para activar comprobaciones y advertencias adicionales de React.
