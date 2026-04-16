@@ -67,7 +67,7 @@ El proyecto utiliza las siguientes librerías principales:
 ### Estructura del Proyecto
 
 ```
-turing-proyect/
+rootly-frontend/
 ├── src/
 │   ├── api/         # Lógica para peticiones a la API
 │   ├── assets/      # Archivos estáticos como imágenes y SVGs
