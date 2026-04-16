@@ -43,11 +43,28 @@ function EcosystemStats() {
     const fetchData = async () => {
       try {
         const data = await api.get("/ecosistema/stats");
-        const formatted = transformStats(data);
-        setStatsData(formatted);
+        if (data && data.length > 0) {
+          const formatted = transformStats(data);
+          setStatsData(formatted);
+        } else {
+          await loadLocalJSON();
+        }
       } catch (error) {
         setError(error);
+        console.warn("La API falló, cargando backup local...", error);
+        await loadLocalJSON();
       }
+    };
+
+    const loadLocalJSON = async () => {
+        try {
+          const response = await fetch("/data/eco-stats.json");
+          const localData = await response.json();
+          setStatsData(localData);
+        } catch (localError) {
+          console.error("También falló el JSON local:", localError);
+          setError(localError);
+        }
     };
 
     fetchData();

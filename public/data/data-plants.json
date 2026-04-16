@@ -1,0 +1,154 @@
+[
+  {
+    "id": 1,
+    "nombre_comun": "Monstera Deliciosa",
+    "nombre_cientifico": "Monstera deliciosa",
+    "id_familia": 1,
+    "familia": {
+      "id": 1,
+      "nombre_familia": "Araceae",
+      "descripcion": "Plantas monocotiledóneas herbáceas con flores en espádice."
+    },
+    "id_estado": 1,
+    "estado": {
+      "id": 1,
+      "nombre_estado": "Saludable",
+      "color_hex": "#10B981"
+    },
+    "fecha_registro": "2026-01-31T13:38:13.835072-07:00",
+    "imagen_url": "https://m.media-amazon.com/images/I/61pA+5cCa4L._AC_UF894,1000_QL80_.jpg"
+  },
+  {
+    "id": 2,
+    "nombre_comun": "Ficus Lyrata",
+    "nombre_cientifico": "Ficus lyrata",
+    "id_familia": 3,
+    "familia": {
+      "id": 3,
+      "nombre_familia": "Moraceae",
+      "descripcion": "Plantas arbóreas o arbustivas, generalmente con látex."
+    },
+    "id_estado": 1,
+    "estado": {
+      "id": 1,
+      "nombre_estado": "Saludable",
+      "color_hex": "#10B981"
+    },
+    "fecha_registro": "2026-01-31T13:38:13.835072-07:00",
+    "imagen_url": "https://florastore.com/cdn/shop/files/3313211_Atmosphere_01_SQ.jpg?v=1751965582&width=1080"
+  },
+  {
+    "id": 3,
+    "nombre_comun": "Calathea Orbifolia",
+    "nombre_cientifico": "Goeppertia orbifolia",
+    "id_familia": 1,
+    "familia": {
+      "id": 1,
+      "nombre_familia": "Araceae",
+      "descripcion": "Plantas monocotiledóneas herbáceas con flores en espádice."
+    },
+    "id_estado": 2,
+    "estado": {
+      "id": 2,
+      "nombre_estado": "Necesita Riego",
+      "color_hex": "#F59E0B"
+    },
+    "fecha_registro": "2026-01-31T13:38:13.835072-07:00",
+    "imagen_url": "https://bs.plantnet.org/image/o/1400d515126e3c630738065d6ab181bc3995ea67"
+  },
+  {
+    "id": 4,
+    "nombre_comun": "Sansevieria",
+    "nombre_cientifico": "Dracaena trifasciata",
+    "id_familia": 2,
+    "familia": {
+      "id": 2,
+      "nombre_familia": "Asparagaceae",
+      "descripcion": "Familia de plantas monocotiledóneas del orden Asparagales."
+    },
+    "id_estado": 1,
+    "estado": {
+      "id": 1,
+      "nombre_estado": "Saludable",
+      "color_hex": "#10B981"
+    },
+    "fecha_registro": "2026-01-31T13:38:13.835072-07:00",
+    "imagen_url": "https://www.jardineiro.net/wp-content/uploads/2013/10/dracaena-trifasciata-robusta.jpg"
+  },
+  {
+    "id": 5,
+    "nombre_comun": "Pothos Aureum",
+    "nombre_cientifico": "Epipremnum aureum",
+    "id_familia": 1,
+    "familia": {
+      "id": 1,
+      "nombre_familia": "Araceae",
+      "descripcion": "Plantas monocotiledóneas herbáceas con flores en espádice."
+    },
+    "id_estado": 3,
+    "estado": {
+      "id": 3,
+      "nombre_estado": "Crítico",
+      "color_hex": "#EF4444"
+    },
+    "fecha_registro": "2026-01-31T13:38:13.835072-07:00",
+    "imagen_url": "https://green-bubble.com/cdn/shop/files/GB2805-4513_1920x.jpg?v=1747432794"
+  },
+  {
+    "id": 6,
+    "nombre_comun": "Alocasia Polly",
+    "nombre_cientifico": "Alocasia x amazonica",
+    "id_familia": 1,
+    "familia": {
+      "id": 1,
+      "nombre_familia": "Araceae",
+      "descripcion": "Plantas monocotiledóneas herbáceas con flores en espádice."
+    },
+    "id_estado": 1,
+    "estado": {
+      "id": 1,
+      "nombre_estado": "Saludable",
+      "color_hex": "#10B981"
+    },
+    "fecha_registro": "2026-01-31T13:38:13.835072-07:00",
+    "imagen_url": "https://thursd.com/storage/media/84001/The-Alocasia-Amazonica-plant-in-a-white-dotted-pot.jpg"
+  },
+  {
+    "id": 9,
+    "nombre_comun": "Pino de Sonora",
+    "nombre_cientifico": "Pinus Arizonica",
+    "id_familia": 2,
+    "familia": {
+      "id": 2,
+      "nombre_familia": "Asparagaceae",
+      "descripcion": "Familia de plantas monocotiledóneas del orden Asparagales."
+    },
+    "id_estado": 1,
+    "estado": {
+      "id": 1,
+      "nombre_estado": "Saludable",
+      "color_hex": "#10B981"
+    },
+    "fecha_registro": "2026-02-01T14:35:21.19707-07:00",
+    "imagen_url": "https://smokecurtain.wordpress.com/wp-content/uploads/2020/03/pinus-arizonica-james-bailey.jpeg?w=768"
+  },
+  {
+    "id": 10,
+    "nombre_comun": "Enebro",
+    "nombre_cientifico": "Enebro",
+    "id_familia": 1,
+    "familia": {
+      "id": 1,
+      "nombre_familia": "Araceae",
+      "descripcion": "Plantas monocotiledóneas herbáceas con flores en espádice."
+    },
+    "id_estado": 1,
+    "estado": {
+      "id": 1,
+      "nombre_estado": "Saludable",
+      "color_hex": "#10B981"
+    },
+    "fecha_registro": "2026-02-01T16:58:37.631858-07:00",
+    "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmm2lOHwd12ruaMVr1zCA5OaC5oBGSSZz_4Q75UDnjnBK5NSK0AoPDtTZWysRUETh_qw01tsw2x3ZGY_viHlnttLi3Ve10cWaYItR7Bg&s=10"
+  }
+]

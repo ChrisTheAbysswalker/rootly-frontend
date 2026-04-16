@@ -10,16 +10,34 @@ function Cards() {
   const itemsPerPage = 6;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await api.get("/especies");
+  const fetchData = async () => {
+    try {
+      const data = await api.get("/especies");
+      
+      if (data && data.length > 0) {
         setSpeciesData(data);
-      } catch (error) {
-        setError(error);
+      } else {
+        await loadLocalJSON();
       }
-    };
-    fetchData();
-  }, []);
+    } catch (error) {
+      console.warn("La API falló, cargando backup local...", error);
+      await loadLocalJSON();
+    }
+  };
+
+  const loadLocalJSON = async () => {
+    try {
+      const response = await fetch("/data/data-plants.json");
+      const localData = await response.json();
+      setSpeciesData(localData);
+    } catch (localError) {
+      console.error("También falló el JSON local:", localError);
+      setError(localError);
+    }
+  };
+
+  fetchData();
+}, []);
 
   const filteredItems =
     selectedFamily === "Todas"

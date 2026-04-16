@@ -9,11 +9,29 @@ function StaffFaunaSection() {
     const fetchData = async () => {
       try {
         const data = await api.get("/staff");
-        setStaffData(data);
+
+        if (data && data.length > 0) {
+          setStaffData(data);
+        } else {
+          await loadLocalJSON();
+        }
       } catch (error) {
         setError(error);
+        console.warn("La API falló, cargando backup local...", error);
+        await loadLocalJSON();
       }
     };
+
+    const loadLocalJSON = async () => {
+    try {
+      const response = await fetch("/data/staff.json");
+      const localData = await response.json();
+      setStaffData(localData);
+    } catch (localError) {
+      console.error("También falló el JSON local:", localError);
+      setError(localError);
+    }
+  };
 
     fetchData();
   }, []);

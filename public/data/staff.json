@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nombre": "Sr. Búho",
+    "especie": "Búho",
+    "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Uhu-muc.jpg",
+    "id_cargo": 1,
+    "cargo": {
+      "id": 1,
+      "titulo_cargo": "Director de Analítica Avanzada",
+      "nivel_acceso": 3
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "Arq. Castor",
+    "especie": "Castor",
+    "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/American_Beaver.jpg/250px-American_Beaver.jpg",
+    "id_cargo": 2,
+    "cargo": {
+      "id": 2,
+      "titulo_cargo": "Jefe de Infraestructura y Desarrollo",
+      "nivel_acceso": 2
+    }
+  },
+  {
+    "id": 3,
+    "nombre": "Coord. Abeja",
+    "especie": "Abeja",
+    "avatar_url": "https://www.velasresorts.com.mx/resourcefiles/blogsmallimages/gvrm-meliponarius.jpg",
+    "id_cargo": 3,
+    "cargo": {
+      "id": 3,
+      "titulo_cargo": "Líder de Redes y Comunicación",
+      "nivel_acceso": 1
+    }
+  }
+]

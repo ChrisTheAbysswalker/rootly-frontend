@@ -1,0 +1,26 @@
+[
+  {
+    "label": "Salud del Vivero",
+    "value": "75%",
+    "detail": "Requiere revisión",
+    "icon": "🌱"
+  },
+  {
+    "label": "Sensores Activos",
+    "value": "8",
+    "detail": "Monitoreo en tiempo real",
+    "icon": "📡"
+  },
+  {
+    "label": "Humedad Promedio",
+    "value": "52.86%",
+    "detail": "Nivel óptimo",
+    "icon": "💧"
+  },
+  {
+    "label": "Especies en Alerta",
+    "value": "2",
+    "detail": "Requieren atención",
+    "icon": "⚠️"
+  }
+]
